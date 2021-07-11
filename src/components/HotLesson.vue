@@ -453,7 +453,7 @@ export default {
         width: 50%;
       }
       @include rwdmin($desktop) {
-        width: 60%;
+        width: 56%;
       }
     }
     .title {
@@ -574,7 +574,7 @@ export default {
         width: 50%;
       }
       @include rwdmin($desktop) {
-        width: 40%;
+        width: 44%;
       }
       .star {
         margin-bottom: 2px;
@@ -594,9 +594,14 @@ export default {
       .btn-group {
         width: 100%;
         position: absolute;
-        top: 90%;
         left: 50%;
         transform: translateX(-50%);
+        @include rwdmax($tablet - 1) {
+          top: 90%;
+        }
+        @include rwdmin($tablet) {
+          top: 94%;
+        }
         button {
           background-color: $yellow;
           padding: 4px;
@@ -615,10 +620,10 @@ export default {
             border: 1px solid $brown;
             color: $deep-brown;
             @include rwdmax($desktop - 1) {
-              font-size: 18px;
+              font-size: 16px;
             }
             @include rwdmin($desktop) {
-              font-size: 20px;
+              font-size: 18px;
             }
           }
         }

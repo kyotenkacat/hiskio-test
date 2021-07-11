@@ -29,7 +29,7 @@
         </div>
         <div class="main-title">
           <img src="@/assets/reel.png" alt="title" />
-          <span>{{ title }}</span>
+          <span>{{ nameMapping[title] }}</span>
         </div>
         <div
           v-for="lesson in list"
