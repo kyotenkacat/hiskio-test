@@ -1,0 +1,98 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+@import '@/styles/variables.scss';
+
+
+body {
+  font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+  background-color: $beige;
+  line-height: 1.5;
+  * {
+    box-sizing: border-box;
+  }
+  .section-title {
+    box-shadow: 5px 5px $deep-brown;
+    margin: auto;
+    text-align: center;
+    @include rwdmax($tablet - 1) {
+      width: 82%;
+    }
+    @include rwd($tablet, $desktop - 1) {
+      width: 65%;
+    }
+    @include rwdmin($desktop) {
+      width: 50%;
+    }
+    .title-decor {
+      background-color: $deep-brown;
+      display: flex;
+      align-items: center;
+      @include rwdmax($tablet - 1) {
+        height: 14px;
+        padding-left: 4px;
+      }
+      @include rwd($tablet, $desktop - 1) {
+        height: 22px;
+        padding-left: 5px;
+      }
+      @include rwdmin($desktop) {
+        height: 42px;
+        padding-left: 5px;
+      }
+      .dot {
+        background-color: $brown;
+        border-radius: 50%;
+        display: inline-block;
+        @include rwdmax($tablet - 1) {
+          width: 5px;
+          height: 5px;
+          margin-right: 10px;
+        }
+        @include rwd($tablet, $desktop - 1) {
+          width: 7.5px;
+          height: 7.5px;
+          margin-right: 5px;
+        }
+        @include rwdmin($desktop) {
+          width: 14px;
+          height: 14px;
+          margin-right: 3.5px;
+        }
+      }
+    }
+    .title-content-container {
+      background-color: $gray;
+      padding: 0 3px 3px;
+      @include rwdmax($tablet - 1) {
+        border: 1px solid $brown;
+        border-top: none;
+      }
+      @include rwdmin($tablet) {
+        border: 2px solid $brown;
+        border-top: none;
+      }
+    }
+    .title-content {
+      background-color: $beige;
+      color: $deep-brown;
+      padding: 10px 0;
+      @include rwdmax($tablet - 1) {
+        border: 1px solid $brown;
+        border-top: none;
+        font-size: 18px;
+      }
+      @include rwdmin($tablet) {
+        border: 2px solid $brown;
+        border-top: none;
+      }
+      @include rwd($tablet, $desktop - 1) {
+        font-size: 22px;
+      }
+      @include rwdmin($desktop) {
+        font-size: 28px;
+      }
+      p {
+        margin: 0 0 10px;
+      }
+    }
+  }
+}

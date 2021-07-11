@@ -1,26 +1,80 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="main">
+    <countdown />
+    <img
+      :src="require(`@/assets/${devicePath}/banner.png`)"
+      class="banner"
+      alt="banner"
+    />
+    <red-envelope />
+    <hot-lesson />
+    <lucky-bag />
+    <img
+      :src="require(`@/assets/${devicePath}/footer.png`)"
+      class="footer"
+      alt="footer"
+    />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent, ref, provide } from 'vue';
+// import HelloWorld from './components/HelloWorld.vue';
+import RedEnvelope from './components/RedEnvelope.vue';
+import Countdown from './components/Countdown.vue';
+import HotLesson from './components/HotLesson.vue';
+import LuckyBag from './components/LuckyBag.vue';
 
-export default {
+export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld,
+    Countdown,
+    RedEnvelope,
+    HotLesson,
+    LuckyBag,
   },
-};
+  setup() {
+    const devicePath = ref('mobile');
+    provide('devicePath', devicePath);
+
+    return {
+      devicePath,
+    };
+  },
+  mounted() {
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      if (window.innerWidth >= 1400) {
+        this.devicePath = 'desktop';
+      } else if (window.innerWidth >= 768) {
+        this.devicePath = 'tablet';
+      } else {
+        this.devicePath = 'mobile';
+      }
+    },
+  },
+});
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import "@/styles/variables.scss";
+
+.main {
+  max-width: 1920px;
+  min-width: $mobile;
+  margin: auto;
+  .banner,
+  .footer {
+    width: 100%;
+  }
+  .footer {
+    vertical-align: bottom;
+  }
 }
 </style>

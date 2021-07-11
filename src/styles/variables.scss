@@ -1,0 +1,28 @@
+$beige: #F0E9D7;
+$deep-brown: #590A10;
+$brown: #BE9360;
+$orange: #D95F3A;
+$gray: #E2D7C0;
+$yellow: #F1C74F;
+
+$desktop: 1400px;
+$tablet: 768px;
+$mobile: 375px;
+
+@mixin rwdmin($val) {
+  @media screen and (min-width: $val) {
+    @content;
+  }
+}
+
+@mixin rwdmax($val) {
+  @media screen and (max-width: $val) {
+    @content;
+  }
+}
+
+@mixin rwd($minVal, $maxVal) {
+  @media screen and (min-width: $minVal) and (max-width: $maxVal) {
+    @content;
+  }
+}
